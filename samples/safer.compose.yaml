@@ -1,0 +1,14 @@
+# A limited declaration example, not a production security certification.
+services:
+  demo-web:
+    image: example.invalid/synthetic-web:demo
+    user: "1000:1000"
+    read_only: true
+    cap_drop:
+      - ALL
+    ports:
+      - target: 8080
+        published: "8080"
+        host_ip: "127.0.0.1"
+    environment:
+      API_TOKEN: "${SYNTHETIC_DEMO_TOKEN}"

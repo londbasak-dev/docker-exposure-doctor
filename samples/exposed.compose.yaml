@@ -1,0 +1,17 @@
+# Entirely synthetic demonstration; never launched by this tool.
+services:
+  demo-web:
+    image: example.invalid/synthetic-web:demo
+    privileged: true
+    network_mode: host
+    user: "0:0"
+    ports:
+      - "8080:80"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - type: bind
+        source: /
+        target: /host
+        read_only: true
+    environment:
+      API_TOKEN: SYNTHETIC_NOT_A_REAL_CREDENTIAL
